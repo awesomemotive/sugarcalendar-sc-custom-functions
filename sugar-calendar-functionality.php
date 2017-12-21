@@ -19,4 +19,4 @@ function sc_remove_slim_body_class( $classes ) {
 	return $classes;
 
 }
-add_filter( 'body_class', 'sc_remove_slim_body_class' );
+add_filter( 'body_class', 'sc_remove_slim_body_class', 11 );
