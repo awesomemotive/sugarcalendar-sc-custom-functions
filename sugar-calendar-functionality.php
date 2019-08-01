@@ -49,4 +49,4 @@ function sc_custom_aa_categories( $included_categories, $all_access_pass_object 
 
     return $included_categories;
 }
-add_filter( 'edd_all_access_included_categories', 'sc_custom_aa_categories' );
+add_filter( 'edd_all_access_included_categories', 'sc_custom_aa_categories', 10, 2 );
