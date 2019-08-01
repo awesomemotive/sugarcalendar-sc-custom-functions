@@ -43,7 +43,7 @@ function sc_custom_aa_categories( $included_categories, $all_access_pass_object 
     $download_id = $all_access_pass_object->download_id;
     $price_id = $all_access_pass_object->price_id;
 
-    if ( 21 === $download_id || 20 === $download_id ) {
+    if ( 21 === (int) $download_id || 20 === (int) $download_id ) {
         $included_categories = array( 7, 2, 5 );
     }
 
