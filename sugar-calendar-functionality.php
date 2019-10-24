@@ -16,6 +16,7 @@
  * Definitions
  */
 define( 'SC_INCLUDES', dirname(__FILE__) . '/includes/' );
+define( 'SC_INTEGRATIONS', SC_INCLUDES . 'integrations/' );
 
 
 /**
@@ -41,7 +42,8 @@ class SC_Custom_Functions {
 		include( SC_INCLUDES . 'misc-functions.php' );
 
 		// Integration functions
-		include( SC_INCLUDES . 'integrations/edd-all-access.php' );
+		include( SC_INTEGRATIONS . 'edd-all-access.php' );
+		include( SC_INTEGRATIONS . 'simple-notices-pro.php' );
 	}
 }
 
