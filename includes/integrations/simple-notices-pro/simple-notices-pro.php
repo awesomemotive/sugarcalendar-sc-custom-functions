@@ -96,35 +96,50 @@ function sc_simple_notices_pro_styles() {
 	<style>
 		#notification-area {
 			background: #333a42;
+			color: #ddd;
 			width: 100%;
-			padding: 1rem 2rem;
-			border-bottom: 3px dashed #f27100;
+			padding: 1.1rem 2rem;
 			vertical-align: middle;
 			text-align: center;
 			position: relative;
 		}
 
 		#notification-area .notice-content {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
+			display: block;
+		}
+
+		#notification-area strong,
+		#countdown-date {
+			color: #fff;
+			font-weight: 600;
+			text-transform: uppercase;
+		}
+
+		#countdown {
+			display: block;
+			text-align: center;
+			margin-top: 6px;
 		}
 
 		#notification-area p {
 			display: inline-block;
 			text-shadow: 1px 1px 3px rgba(0,0,0,.2);
-			font-size: 20px;
+			font-size: 18px;
 			margin-bottom: 0;
 		}
 
 		#notification-area p {
 			margin-bottom: 0;
-			color: #fff;
 		}
 
-		#notification-area a,
-		#notification-area a:hover {
+		#notification-area a:not(#remove-notice) {
 			color: #fff;
+			border-bottom: 2px dotted rgba(255,255,255,.5);
+		}
+
+		#notification-area a:hover:not(#remove-notice) {
+			color: #fff;
+			border-bottom: 2px solid #fff;
 		}
 
 		div[class*="notice-"] {
@@ -132,13 +147,20 @@ function sc_simple_notices_pro_styles() {
 			width: 100%;
 		}
 
+		.notice-icon {
+			margin-bottom: 6px;
+		}
+
 		.notice-icon img {
+			position: relative;
+			top: 5px;
 			width: 32px;
 			height: 32px;
 		}
 
 		.notice-message {
 			padding: 0 1rem;
+			margin-bottom: 10px;
 		}
 
 		.notice-remove img {
@@ -154,6 +176,12 @@ function sc_simple_notices_pro_styles() {
 
 		@media all and ( min-width: 768px ) {
 
+			#notification-area .notice-content {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+
 			.notice-content [class*="notice-"] {
 				display: inline-block;
 			}
@@ -165,6 +193,7 @@ function sc_simple_notices_pro_styles() {
 
 			.notice-content .notice-message {
 				width: 86%;
+				margin-bottom: 0;
 			}
 
 			.notice-content .notice-remove {
@@ -173,7 +202,12 @@ function sc_simple_notices_pro_styles() {
 			}
 		}
 
-		@media all and ( min-width: 576px ) {
+		@media all and ( min-width: 1200px ) {
+
+			#countdown {
+				display: inline;
+				text-align: left;
+			}
 		}
 	</style>
 
