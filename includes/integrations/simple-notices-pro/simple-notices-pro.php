@@ -64,13 +64,15 @@ function sc_simple_notices_pro_display() {
 					<div id="notification-area" class="snp-hidden">
 						<div class="notice-content">
 							<div class="notice-icon">
-								Horn
+								<img src="<?php echo plugin_dir_url( __FILE__ ) . 'bullhorn.svg'; ?>" alt="">
 							</div>
 							<div class="notice-message">
 								<?php echo do_shortcode( wpautop( $notice->post_content ) ); ?>
 							</div>
 							<div class="notice-remove">
-								<a class="remove-notice" href="#" id="remove-notice" rel="<?php echo $notice->ID; ?>">x</a>
+								<a class="remove-notice" href="#" id="remove-notice" rel="<?php echo $notice->ID; ?>">
+									<img src="<?php echo plugin_dir_url( __FILE__ ) . 'close.svg'; ?>" alt="">
+								</a>
 							</div>
 						</div>
 					</div>
@@ -96,6 +98,7 @@ function sc_simple_notices_pro_styles() {
 			background: #333a42;
 			width: 100%;
 			padding: 1rem 2rem;
+			border-bottom: 3px dashed #f27100;
 			vertical-align: middle;
 			text-align: center;
 			position: relative;
@@ -109,6 +112,8 @@ function sc_simple_notices_pro_styles() {
 
 		#notification-area p {
 			display: inline-block;
+			text-shadow: 1px 1px 3px rgba(0,0,0,.2);
+			font-size: 20px;
 			margin-bottom: 0;
 		}
 
@@ -122,8 +127,29 @@ function sc_simple_notices_pro_styles() {
 			color: #fff;
 		}
 
-		.notice-content .notice-message {
+		div[class*="notice-"] {
+			display: block;
+			width: 100%;
+		}
+
+		.notice-icon img {
+			width: 32px;
+			height: 32px;
+		}
+
+		.notice-message {
 			padding: 0 1rem;
+		}
+
+		.notice-remove img {
+			width: 16px;
+			height: 16px;
+			opacity: .5;
+			transition: opacity .2s;
+		}
+
+		.notice-remove img:hover {
+			opacity: 1;
 		}
 
 		@media all and ( min-width: 768px ) {
@@ -148,15 +174,6 @@ function sc_simple_notices_pro_styles() {
 		}
 
 		@media all and ( min-width: 576px ) {
-
-			#announcement {
-				margin: 0 0 1rem 0;
-				display: none;
-			}
-
-			#notification-area p {
-				margin-bottom: 0;
-			}
 		}
 	</style>
 
