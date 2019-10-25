@@ -61,14 +61,17 @@ function sc_simple_notices_pro_display() {
 				if ( pippin_check_notice_is_read( $notice->ID, $user_ID ) != true ) {
 					?>
 
-					<div id="notification-area" class="<?php echo strtolower( str_replace( ' ', '_', get_post_meta( $notice->ID, '_notice_color', true ) ) ); ?> snp-hidden" data-effect="<?php echo strtolower( get_post_meta( $notice->ID, '_notice_effect', true ) ); ?>">
-						<div id="notice-content"<?php if ( $icon && $icon != 'none' ) { ?> class="with-icon"<?php } ?>>
-
-							<?php echo do_shortcode( wpautop( $notice->post_content ) ); ?>
-							<?php if ( !get_post_meta( $notice->ID, '_hide_close', true ) ) { ?>
-								<a class="remove-notice" href="#" id="remove-notice" rel="<?php echo $notice->ID; ?>">&times;</a>
-							<?php } ?>
-
+					<div id="notification-area" class="snp-hidden">
+						<div class="notice-content">
+							<div class="notice-icon">
+								Horn
+							</div>
+							<div class="notice-message">
+								<?php echo do_shortcode( wpautop( $notice->post_content ) ); ?>
+							</div>
+							<div class="notice-remove">
+								<a class="remove-notice" href="#" id="remove-notice" rel="<?php echo $notice->ID; ?>">x</a>
+							</div>
 						</div>
 					</div>
 
@@ -92,19 +95,21 @@ function sc_simple_notices_pro_styles() {
 		#notification-area {
 			background: #333a42;
 			width: 100%;
-			padding: 1rem;
+			padding: 1rem 2rem;
 			vertical-align: middle;
 			text-align: center;
 			position: relative;
 		}
 
-		#notification-area p {
-			display: inline-block;
+		#notification-area .notice-content {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
 		}
 
-		.remove-notice {
-			float: right;
-			display: none;
+		#notification-area p {
+			display: inline-block;
+			margin-bottom: 0;
 		}
 
 		#notification-area p {
@@ -117,8 +122,41 @@ function sc_simple_notices_pro_styles() {
 			color: #fff;
 		}
 
-		@media only screen and ( min-width: 700px ) {
-			.remove-notice { display: inline-block; }
+		.notice-content .notice-message {
+			padding: 0 1rem;
+		}
+
+		@media all and ( min-width: 768px ) {
+
+			.notice-content [class*="notice-"] {
+				display: inline-block;
+			}
+
+			.notice-content .notice-icon {
+				text-align: left;
+				width: 7%;
+			}
+
+			.notice-content .notice-message {
+				width: 86%;
+			}
+
+			.notice-content .notice-remove {
+				text-align: right;
+				width: 7%;
+			}
+		}
+
+		@media all and ( min-width: 576px ) {
+
+			#announcement {
+				margin: 0 0 1rem 0;
+				display: none;
+			}
+
+			#notification-area p {
+				margin-bottom: 0;
+			}
 		}
 	</style>
 

@@ -15,7 +15,7 @@
 /**
  * Definitions
  */
-define( 'SC_INCLUDES', dirname(__FILE__) . '/includes/' );
+define( 'SC_INCLUDES', dirname( __FILE__ ) . '/includes/' );
 define( 'SC_INTEGRATIONS', SC_INCLUDES . 'integrations/' );
 
 
@@ -40,10 +40,12 @@ class SC_Custom_Functions {
 
 		// General functions
 		include( SC_INCLUDES . 'misc-functions.php' );
+		include( SC_INCLUDES . 'metaboxes.php' );
 
 		// Integration functions
 		include( SC_INTEGRATIONS . 'edd-all-access.php' );
-		include( SC_INTEGRATIONS . 'simple-notices-pro.php' );
+		include( SC_INTEGRATIONS . 'simple-notices-pro/simple-notices-pro.php' );
+		include( SC_INTEGRATIONS . 'simple-notices-pro/countdown/countdown.php' );
 	}
 }
 
