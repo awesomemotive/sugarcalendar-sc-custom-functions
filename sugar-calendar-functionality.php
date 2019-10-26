@@ -18,6 +18,9 @@
 define( 'SC_INCLUDES', dirname( __FILE__ ) . '/includes/' );
 define( 'SC_INTEGRATIONS', SC_INCLUDES . 'integrations/' );
 
+$sc_theme = wp_get_theme();
+define( 'SC_THEME_VERSION', $sc_theme->get( 'Version' ) );
+
 
 /**
  * Class SC_Custom_Functions

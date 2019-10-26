@@ -12,8 +12,7 @@
 function sc_enqueue_countdown_scripts() {
 
 	$path     = plugin_dir_url( __FILE__ ) . 'js/';
-	$sc_theme = wp_get_theme();
-	$ver      = $sc_theme->get( 'Version' );
+	$ver      = SC_THEME_VERSION;
 
 	// Register countdown script.
 	wp_register_script( 'moment-js', $path . 'moment.min.js', array(), $ver );

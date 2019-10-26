@@ -14,6 +14,15 @@ add_action( 'wp_enqueue_scripts', 'sc_simple_notices_pro_dequeue_style' );
 
 
 /**
+ * Custom JS to close notice
+ */
+function sc_simple_notices_pro_remove_notice() {
+	wp_enqueue_script( 'remove-notice', plugin_dir_url( __FILE__ ) . 'notices.js', array( 'jquery' ), SC_THEME_VERSION, true );
+}
+add_action( 'wp_enqueue_scripts', 'sc_simple_notices_pro_remove_notice' );
+
+
+/**
  * Remove notice from bottom of site and place at the top of the site in Themedd.
  */
 remove_action( 'wp_footer', 'pippin_display_notice' );
@@ -24,10 +33,6 @@ add_action( 'themedd_site_before', 'sc_simple_notices_pro_display' );
  * Notice output
  */
 function sc_simple_notices_pro_display() {
-
-	if ( ! function_exists( 'pippin_check_notice_is_read' ) ) {
-		return;
-	}
 
 	// this displays the notification area if the user has not read it before
 	global $user_ID;
@@ -44,7 +49,6 @@ function sc_simple_notices_pro_display() {
 
 		foreach ( $notices as $notice ) {
 
-			$icon           = strtolower( str_replace( ' ', '_', get_post_meta( $notice->ID, '_icon', true ) ) );
 			$logged_in_only = get_post_meta( $notice->ID, '_notice_for_logged_in_only', true );
 
 			$can_view = false;
@@ -58,7 +62,7 @@ function sc_simple_notices_pro_display() {
 
 			if ( $can_view ) {
 
-				if ( pippin_check_notice_is_read( $notice->ID, $user_ID ) != true ) {
+				if ( function_exists( 'pippin_check_notice_is_read' ) && pippin_check_notice_is_read( $notice->ID, $user_ID ) != true ) {
 					?>
 
 					<div id="notification-area" class="snp-hidden">
@@ -104,6 +108,11 @@ function sc_simple_notices_pro_styles() {
 			position: relative;
 		}
 
+		#notification-area.snp-hidden {
+			display: none;
+		}
+
+		.logged-in #notification-area.snp-hidden, /* don't hide notice for logged in users */
 		#notification-area .notice-content {
 			display: block;
 		}
@@ -172,6 +181,10 @@ function sc_simple_notices_pro_styles() {
 
 		.notice-remove img:hover {
 			opacity: 1;
+		}
+
+		.logged-in .notice-remove img {
+			display: none;
 		}
 
 		@media all and ( min-width: 768px ) {
