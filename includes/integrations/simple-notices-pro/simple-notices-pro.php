@@ -114,7 +114,7 @@ function sc_simple_notices_pro_styles() {
 			display: none;
 		}
 
-		.logged-in #notification-area.snp-hidden, /* don't hide notice for logged in users (WHY???) */
+		.logged-in #notification-area.snp-hidden, /* don't hide notice for logged in users (WHY?) */
 		#notification-area .notice-content {
 			display: block;
 		}
