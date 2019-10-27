@@ -68,14 +68,14 @@ function sc_simple_notices_pro_display() {
 					<div id="notification-area" class="snp-hidden">
 						<div class="notice-content">
 							<div class="notice-icon">
-								<img src="<?php echo plugin_dir_url( __FILE__ ) . 'bullhorn.svg'; ?>" alt="">
+								<img class="bullhorn-icon" src="<?php echo plugin_dir_url( __FILE__ ) . 'bullhorn.svg'; ?>" alt="">
 							</div>
 							<div class="notice-message">
 								<?php echo do_shortcode( wpautop( $notice->post_content ) ); ?>
 							</div>
 							<div class="notice-remove">
 								<a class="remove-notice" href="#" id="remove-notice" rel="<?php echo $notice->ID; ?>">
-									<img src="<?php echo plugin_dir_url( __FILE__ ) . 'close.svg'; ?>" alt="">
+									<img class="remove-notice-icon" src="<?php echo plugin_dir_url( __FILE__ ) . 'close.svg'; ?>" alt="">
 								</a>
 							</div>
 						</div>
@@ -98,11 +98,13 @@ function sc_simple_notices_pro_styles() {
 	?>
 
 	<style>
+
+		/* General */
 		#notification-area {
 			background: #333a42;
 			color: #ddd;
 			width: 100%;
-			padding: 1.1rem 2rem;
+			padding: 1rem;
 			vertical-align: middle;
 			text-align: center;
 			position: relative;
@@ -112,22 +114,9 @@ function sc_simple_notices_pro_styles() {
 			display: none;
 		}
 
-		.logged-in #notification-area.snp-hidden, /* don't hide notice for logged in users */
+		.logged-in #notification-area.snp-hidden, /* don't hide notice for logged in users (WHY???) */
 		#notification-area .notice-content {
 			display: block;
-		}
-
-		#notification-area strong,
-		#countdown-date {
-			color: #fff;
-			font-weight: 600;
-			text-transform: uppercase;
-		}
-
-		#countdown {
-			display: block;
-			text-align: center;
-			margin-top: 6px;
 		}
 
 		#notification-area p {
@@ -137,90 +126,114 @@ function sc_simple_notices_pro_styles() {
 			margin-bottom: 0;
 		}
 
-		#notification-area p {
-			margin-bottom: 0;
+		#notification-area strong {
+			color: #fff;
+			font-weight: 600;
+			text-transform: uppercase;
 		}
 
-		#notification-area a:not(#remove-notice) {
+		#notification-area a {
 			color: #fff;
 			border-bottom: 2px dotted rgba(255,255,255,.5);
 		}
 
-		#notification-area a:hover:not(#remove-notice) {
+		#notification-area a:hover {
 			color: #fff;
 			border-bottom: 2px solid #fff;
 		}
 
-		div[class*="notice-"] {
-			display: block;
-			width: 100%;
+		/* Structure */
+		#notification-area .notice-content {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
 		}
 
 		.notice-icon {
-			margin-bottom: 6px;
+			text-align: left;
 		}
 
-		.notice-icon img {
+		.notice-message {
+			margin-bottom: 0;
+		}
+
+		.notice-remove {
+			text-align: right;
+		}
+
+		@media all and ( max-width: 1000px ) {
+
+			#notification-area .notice-content {
+				display: block;
+			}
+
+			#notification-area .notice-content > .notice-icon {
+				display: none;
+			}
+
+			.notice-content .notice-message {
+				text-align: center;
+			}
+
+			.notice-content #countdown {
+				display: block;
+				margin: 0 auto 1rem;
+			}
+
+			#notification-area .remove-notice-icon {
+				position: absolute;
+				top: 1rem;
+				right: 1rem;
+			}
+		}
+
+		/* Countdown */
+		#countdown {
+			display: inline-block;
+			text-align: center;
+			line-height: 1.2;
+			padding: 0.5rem 1rem;
+			border: 2px solid #fff;
+			margin: 0 1rem 0 0;
+			width: 200px;
+			vertical-align: middle;
+		}
+
+		#countdown-text {
+			text-transform: uppercase;
+			font-size: .875rem;
+		}
+
+		#countdown-date {
+			font-weight: 600;
+		}
+
+		/* Icons */
+		.notice-icon .bullhorn-icon {
 			position: relative;
-			top: 5px;
 			width: 32px;
 			height: 32px;
 		}
 
-		.notice-message {
-			padding: 0 1rem;
-			margin-bottom: 10px;
+		.notice-remove #remove-notice,
+		.notice-remove #remove-notice:hover {
+			text-decoration: none;
+			border: 0;
 		}
 
-		.notice-remove img {
+		.notice-remove .remove-notice-icon {
 			width: 16px;
 			height: 16px;
-			opacity: .5;
+			opacity: .7;
 			transition: opacity .2s;
 		}
 
-		.notice-remove img:hover {
+		.notice-remove .remove-notice-icon:hover {
 			opacity: 1;
 		}
 
-		.logged-in .notice-remove img {
-			display: none;
-		}
-
-		@media all and ( min-width: 768px ) {
-
-			#notification-area .notice-content {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-			}
-
-			.notice-content [class*="notice-"] {
-				display: inline-block;
-			}
-
-			.notice-content .notice-icon {
-				text-align: left;
-				width: 7%;
-			}
-
-			.notice-content .notice-message {
-				width: 86%;
-				margin-bottom: 0;
-			}
-
-			.notice-content .notice-remove {
-				text-align: right;
-				width: 7%;
-			}
-		}
-
-		@media all and ( min-width: 1200px ) {
-
-			#countdown {
-				display: inline;
-				text-align: left;
-			}
+		.logged-in .notice-remove .remove-notice-icon {
+			/*display: none;*/
 		}
 	</style>
 
