@@ -6,47 +6,53 @@
  * Author:      Sandhills Development, LLC
  * Author URI:  https://sandhillsdev.com
  * Version:     1.0.1
+ *
+ * Please think about where your functions belong and place them there.
+ * Create new files and directories if necessary.
  */
+
 
 /**
- * Remove the "slim" class from the array of body classes.
- *
- * @since 1.0.0
- *
- * @param array $classes
- *
- * @return array
+ * Definitions
  */
-function sc_remove_slim_body_class( $classes = array() ) {
+define( 'SC_INCLUDES', dirname( __FILE__ ) . '/includes/' );
+define( 'SC_INTEGRATIONS', SC_INCLUDES . 'integrations/' );
 
-	$found = array_search( 'slim', $classes );
+$sc_theme = wp_get_theme();
+define( 'SC_THEME_VERSION', $sc_theme->get( 'Version' ) );
 
-	if ( is_page() && ( false !== $found ) ) {
-		unset( $classes[ $found ] );
+
+/**
+ * Class SC_Custom_Functions
+ */
+class SC_Custom_Functions {
+
+	private static $instance;
+
+	public static function instance() {
+
+		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof SC_Custom_Functions ) ) {
+			self::$instance = new SC_Custom_Functions;
+			self::$instance->includes();
+		}
+
+		return self::$instance;
 	}
 
-	return $classes;
+	private function includes() {
+
+		// General functions
+		include( SC_INCLUDES . 'misc-functions.php' );
+		include( SC_INCLUDES . 'metaboxes.php' );
+
+		// Integration functions
+		include( SC_INTEGRATIONS . 'edd-all-access.php' );
+		include( SC_INTEGRATIONS . 'simple-notices-pro/simple-notices-pro.php' );
+		include( SC_INTEGRATIONS . 'simple-notices-pro/countdown/countdown.php' );
+	}
 }
-add_filter( 'body_class', 'sc_remove_slim_body_class', 11 );
 
-/**
- * Enables all add-on categories for All Access Passes
- *
- * @since 1.0.1
- *
- * @param array $classes
- *
- * @return array
- */
-function sc_custom_aa_categories( $included_categories, $all_access_pass_object ) {
-
-    $download_id = $all_access_pass_object->download_id;
-    $price_id = $all_access_pass_object->price_id;
-
-    if ( 21 === (int) $download_id || 20 === (int) $download_id ) {
-        $included_categories = array( 7, 2, 5 );
-    }
-
-    return $included_categories;
+function SC_Custom_Functions() {
+	return SC_Custom_Functions::instance();
 }
-add_filter( 'edd_all_access_included_categories', 'sc_custom_aa_categories', 10, 2 );
+add_action( 'plugins_loaded', 'SC_Custom_Functions', 11 );
