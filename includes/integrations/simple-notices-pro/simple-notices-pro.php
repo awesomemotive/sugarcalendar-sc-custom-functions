@@ -34,6 +34,11 @@ add_action( 'themedd_site_before', 'sc_simple_notices_pro_display' );
  */
 function sc_simple_notices_pro_display() {
 
+	// If we're on the front page and a promotional hero is showing, don't display the notice
+	if ( is_front_page() && ( 1 === get_theme_mod( 'sc_show_promotional_hero', 0 ) ) ) {
+		return;
+	}
+
 	// this displays the notification area if the user has not read it before
 	global $user_ID;
 
@@ -101,7 +106,7 @@ function sc_simple_notices_pro_styles() {
 
 		/* General */
 		#notification-area {
-			background: #333a42;
+			background: #203E4D;
 			color: #ddd;
 			width: 100%;
 			padding: 1rem;
