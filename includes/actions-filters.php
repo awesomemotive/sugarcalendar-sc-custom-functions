@@ -42,6 +42,6 @@ add_action( 'themedd_content_start', 'sc_promotional_hero' );
 
 // Load style for the front page
 function sc_styles() {
-	wp_enqueue_style( 'sc-style', plugins_url( 'custom-functions/includes/assets/css/style.css' ) , array() ,SC_THEME_VERSION, 'all' );
+	wp_enqueue_style( 'sc-style', plugins_url( 'includes/assets/css/style.css', dirname(__FILE__) ) , array() ,SC_THEME_VERSION, 'all' );
 }
 add_action( 'wp_enqueue_scripts', 'sc_styles' );
