@@ -1,0 +1,401 @@
+/**
+ * Pricing tables are built using Easy Pricing Tables.
+ * All HTML is written directly into the pricing table UI.
+ * When a discount code is being promoted (see: sc_discount_promo_is_active()),
+ * 'promo-is-active' is added as a body_class.
+ */
+
+/* No sale promotion is active */
+.ptp-price {
+	padding: 16px 4px !important;
+}
+.discount-pricing,
+.discount-bill-cycle {
+	display: none;
+}
+.standard-pricing {
+	position: relative;
+	display: inline-block;
+	font-size: 2rem;
+	line-height: 1;
+	font-weight: 600;
+	margin-bottom: 5px;
+}
+.standard-bill-cycle {
+	display: block;
+	color: #333;
+	font-size: 14px;
+	line-height: 1;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+/* Sale promotion is active */
+.promo-is-active .standard-pricing {
+	display: block;
+	color: #818181;
+	font-size: 22px;
+	font-weight: 400;
+	text-decoration: line-through;
+}
+.promo-is-active .discount-pricing {
+	position: relative;
+	display: inline-block;
+	font-size: 2rem;
+	line-height: 1;
+	font-weight: 600;
+	margin: 0 0 5px 0;
+}
+.promo-is-active .discount-pricing .usd {
+	position: absolute;
+	top: 3px;
+	left: -13px;
+	display: inline-block;
+	font-size: 23px;
+	line-height: 1;
+}
+.promo-is-active .standard-bill-cycle {
+	display: none;
+}
+.promo-is-active .discount-bill-cycle {
+	display: inline;
+}
+.promo-is-active .discount-bill-cycle .first-year {
+	display: block;
+	color: #333;
+	font-size: 14px;
+	line-height: 1;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+.promo-is-active .discount-bill-cycle .following-years {
+	color: #818181;
+	font-size: 14px;
+	line-height: 1;
+	font-weight: 400;
+	font-style: italic;
+	white-space: nowrap;
+}
+
+
+/* Promotional hero area */
+@media all and (min-width: 768px) {
+	.has-promotional-hero .site-header-menu {
+		margin-bottom: 1rem;
+	}
+}
+.promotional-hero {
+	position: relative;
+	background-color: #203E4D;
+	color: #fff;
+	text-align: center;
+	text-shadow: 2px 2px rgba(22, 70, 128, 0.15);
+}
+.promotional-hero .wrapper {
+	background: transparent url("../images/confetti.svg") no-repeat -30px bottom;
+	background-size: 750px auto;
+	padding: 2rem 1rem;
+	max-width: 1252px;
+	margin: 0 auto;
+}
+@media all and (min-width: 576px) {
+	.promotional-hero .wrapper {
+		background-position-x: left;
+		background-size: 1000px auto;
+		padding: 3rem 2rem;
+	}
+}
+@media all and (min-width: 992px) {
+	.promotional-hero .wrapper {
+		background-size: 1300px auto;
+		padding: 4rem 2rem;
+	}
+}
+.promotional-hero .promo-content .promo-title {
+	position: relative;
+	display: inline-block;
+	color: #fff;
+	font-size: 26px;
+	line-height: 1.2;
+	font-weight: 700;
+	text-transform: uppercase;
+	text-shadow: 2px 2px rgba(22, 70, 128, 0.15);
+	margin-bottom: .5rem;
+}
+@media all and (min-width: 576px) {
+	.promotional-hero .promo-content .promo-title {
+		font-size: 32px;
+		line-height: 1;
+	}
+}
+@media all and (min-width: 992px) {
+	.promotional-hero .promo-content .promo-title {
+		font-size: 48px;
+	}
+}
+.promotional-hero .promo-content .promo-title .bf-plus-cm {
+	font-size: 80%;
+}
+.promotional-hero .promo-content .promo-title .cyber-monday {
+	display: block;
+}
+@media all and (min-width: 480px) {
+	.promotional-hero .promo-content .promo-title .cyber-monday {
+		display: inline;
+	}
+}
+.promotional-hero .promo-content .promo-title .promo-sale-tag {
+	display: none;
+}
+@media all and (min-width: 576px) {
+	.promotional-hero .promo-content .promo-title .promo-sale-tag {
+		position: absolute;
+		top: 22px;
+		right: -9px;
+		display: block;
+		width: 59px;
+		height: auto;
+	}
+}
+@media all and (min-width: 992px) {
+	.promotional-hero .promo-content .promo-title .promo-sale-tag {
+		top: 18px;
+		right: -79px;
+		width: 92px;
+	}
+}
+.promotional-hero .promo-content .promo-percent-off-wrap {
+	font-weight: 700;
+	line-height: 1;
+	text-transform: uppercase;
+	text-shadow: 2px 2px rgba(22, 70, 128, 0.15);
+	margin: 0 auto 1.5rem;
+}
+.promotional-hero .promo-content .promo-percent-off-wrap span {
+	display: inline-block;
+}
+.promotional-hero .promo-content .promo-percent-off-wrap .promo-percent-col {
+	display: inline-block;
+	width: 100%;
+}
+@media all and (min-width: 576px) {
+	.promotional-hero .promo-content .promo-percent-off-wrap .promo-percent-col {
+		width: inherit;
+	}
+}
+.promotional-hero .promo-content .promo-percent-off-wrap .promo-percent-col .promo-percent span {
+	font-size: 100px;
+}
+@media all and (min-width: 440px) {
+	.promotional-hero .promo-content .promo-percent-off-wrap .promo-percent-col .promo-percent span {
+		font-size: 120px;
+	}
+}
+@media all and (min-width: 992px) {
+	.promotional-hero .promo-content .promo-percent-off-wrap .promo-percent-col .promo-percent span {
+		font-size: 160px;
+	}
+}
+.promotional-hero .promo-content .promo-percent-off-wrap .tiny-response {
+	display: block;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 1;
+	text-transform: uppercase;
+}
+@media all and (min-width: 440px) {
+	.promotional-hero .promo-content .promo-percent-off-wrap .tiny-response {
+		font-size: 24px;
+	}
+}
+@media all and (min-width: 576px) {
+	.promotional-hero .promo-content .promo-percent-off-wrap .tiny-response {
+		display: none;
+	}
+}
+.promotional-hero .promo-content .promo-percent-off-wrap .promo-off-col {
+	display: none;
+}
+@media all and (min-width: 576px) {
+	.promotional-hero .promo-content .promo-percent-off-wrap .promo-off-col {
+		display: inline-block;
+		padding-left: 1.5rem;
+	}
+}
+@media all and (min-width: 768px) {
+	.promotional-hero .promo-content .promo-percent-off-wrap .promo-off-col {
+		padding-left: 2rem;
+	}
+}
+.promotional-hero .promo-content .promo-percent-off-wrap .promo-off-col .promo-off span {
+	font-size: 110px;
+	line-height: 1.06;
+	font-weight: 700;
+}
+@media all and (min-width: 360px) {
+	.promotional-hero .promo-content .promo-percent-off-wrap .promo-off-col .promo-off span {
+		font-size: 66px;
+	}
+}
+@media all and (min-width: 480px) {
+	.promotional-hero .promo-content .promo-percent-off-wrap .promo-off-col .promo-off span {
+		font-size: 78px;
+		line-height: 1.14;
+	}
+}
+@media all and (min-width: 992px) {
+	.promotional-hero .promo-content .promo-percent-off-wrap .promo-off-col .promo-off span {
+		font-size: 100px;
+		line-height: 1.13;
+	}
+}
+.promotional-hero .promo-content .promo-percent-off-wrap .promo-all-purchases {
+	padding-left: 6px;
+}
+.promotional-hero .promo-content .promo-percent-off-wrap .promo-all-purchases span {
+	font-size: 24px;
+}
+@media all and (min-width: 360px) {
+	.promotional-hero .promo-content .promo-percent-off-wrap .promo-all-purchases span {
+		font-size: 14px;
+	}
+}
+@media all and (min-width: 480px) {
+	.promotional-hero .promo-content .promo-percent-off-wrap .promo-all-purchases span {
+		font-size: 16px;
+	}
+}
+@media all and (min-width: 992px) {
+	.promotional-hero .promo-content .promo-percent-off-wrap .promo-all-purchases span {
+		font-size: 22px;
+	}
+}
+.promotional-hero .promo-content .promo-length-wrap,
+.promotional-hero .promo-content .promo-sale-text-wrap {
+	display: block;
+	max-width: 685px;
+	margin: 0 auto 2rem;
+}
+.promotional-hero .promo-content .promo-length-wrap .promo-length,
+.promotional-hero .promo-content .promo-sale-text-wrap .promo-length,
+.promotional-hero .promo-content .promo-length-wrap .promo-sale-text,
+.promotional-hero .promo-content .promo-sale-text-wrap .promo-sale-text {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 1;
+	text-transform: uppercase;
+	text-shadow: 2px 2px rgba(22, 70, 128, 0.15);
+	width: 100%;
+}
+@media all and (min-width: 440px) {
+	.promotional-hero .promo-content .promo-length-wrap .promo-length,
+	.promotional-hero .promo-content .promo-sale-text-wrap .promo-length,
+	.promotional-hero .promo-content .promo-length-wrap .promo-sale-text,
+	.promotional-hero .promo-content .promo-sale-text-wrap .promo-sale-text {
+		font-size: 24px;
+	}
+}
+@media all and (min-width: 576px) {
+	.promotional-hero .promo-content .promo-length-wrap .promo-length,
+	.promotional-hero .promo-content .promo-sale-text-wrap .promo-length,
+	.promotional-hero .promo-content .promo-length-wrap .promo-sale-text,
+	.promotional-hero .promo-content .promo-sale-text-wrap .promo-sale-text {
+		font-size: 30px;
+	}
+}
+@media all and (min-width: 768px) {
+	.promotional-hero .promo-content .promo-length-wrap .promo-length,
+	.promotional-hero .promo-content .promo-sale-text-wrap .promo-length,
+	.promotional-hero .promo-content .promo-length-wrap .promo-sale-text,
+	.promotional-hero .promo-content .promo-sale-text-wrap .promo-sale-text {
+		font-size: 34px;
+	}
+}
+.promotional-hero .promo-content .promo-length-wrap .promo-length:before,
+.promotional-hero .promo-content .promo-sale-text-wrap .promo-length:before,
+.promotional-hero .promo-content .promo-length-wrap .promo-sale-text:before,
+.promotional-hero .promo-content .promo-sale-text-wrap .promo-sale-text:before,
+.promotional-hero .promo-content .promo-length-wrap .promo-length:after,
+.promotional-hero .promo-content .promo-sale-text-wrap .promo-length:after,
+.promotional-hero .promo-content .promo-length-wrap .promo-sale-text:after,
+.promotional-hero .promo-content .promo-sale-text-wrap .promo-sale-text:after {
+	content: '';
+	border-top: 4px solid #385e71;
+	margin: 0 15px 0 0;
+	flex: 1 0 20px;
+}
+.promotional-hero .promo-content .promo-length-wrap .promo-length:after,
+.promotional-hero .promo-content .promo-sale-text-wrap .promo-length:after,
+.promotional-hero .promo-content .promo-length-wrap .promo-sale-text:after,
+.promotional-hero .promo-content .promo-sale-text-wrap .promo-sale-text:after {
+	margin: 0 0 0 15px;
+}
+.promotional-hero .promo-content .promo-sale-text-wrap {
+	display: block;
+	margin-bottom: 0;
+	margin-top: 6px;
+}
+@media all and (min-width: 576px) {
+	.promotional-hero .promo-content .promo-sale-text-wrap {
+		display: none;
+	}
+}
+.promotional-hero .promo-content .promo-cta {
+	margin: 0 auto 1.5rem;
+}
+@media all and (min-width: 440px) {
+	.promotional-hero .promo-content .promo-cta {
+		padding: 0;
+		max-width: 300px;
+	}
+}
+.promotional-hero .promo-content .promo-cta .promo-code-label {
+	color: #666;
+	font-size: 14px;
+	font-weight: 700;
+	text-transform: uppercase;
+	margin-bottom: 4px;
+}
+.promotional-hero .promo-content .promo-cta .promo-coupon-code-row {
+	text-shadow: none;
+	border: 3px solid #fff;
+	border-radius: 2px;
+}
+@media all and (min-width: 440px) {
+	.promotional-hero .promo-content .promo-cta .promo-coupon-code-row {
+		border-width: 4px;
+	}
+}
+.promotional-hero .promo-content .promo-cta .promo-coupon-code-row .code-col {
+	background: #fff;
+	padding: 10px;
+	border: 2px dashed #f27100;
+	width: 100%;
+}
+@media all and (min-width: 440px) {
+	.promotional-hero .promo-content .promo-cta .promo-coupon-code-row .code-col {
+		border-width: 3px;
+	}
+}
+.promotional-hero .promo-content .promo-cta .promo-coupon-code-row .code-col .promo-code {
+	display: inline-block;
+	color: #3974AB;
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 1;
+	text-transform: uppercase;
+}
+@media all and (min-width: 440px) {
+	.promotional-hero .promo-content .promo-cta .promo-coupon-code-row .code-col .promo-code {
+		font-size: 26px;
+	}
+}
+.promotional-hero .promo-content .promo-ends {
+	font-size: 20px;
+}
+.promotional-hero .promo-content .promo-fine-print {
+	font-size: 16px;
+}

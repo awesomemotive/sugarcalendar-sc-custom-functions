@@ -15,12 +15,13 @@
 /**
  * Definitions
  */
-define( 'SC_INCLUDES', dirname( __FILE__ ) . '/includes/' );
+define( 'SC_PLUGIN_DIR', dirname( __FILE__ ) );
+
+define( 'SC_INCLUDES', SC_PLUGIN_DIR . '/includes/' );
 define( 'SC_INTEGRATIONS', SC_INCLUDES . 'integrations/' );
 
 $sc_theme = wp_get_theme();
 define( 'SC_THEME_VERSION', $sc_theme->get( 'Version' ) );
-
 
 /**
  * Class SC_Custom_Functions
@@ -42,11 +43,13 @@ class SC_Custom_Functions {
 	private function includes() {
 
 		// General functions
-		include( SC_INCLUDES . 'misc-functions.php' );
+		include( SC_INCLUDES . 'actions-filters.php' );
+		include( SC_INCLUDES . 'customizer.php' );
 		include( SC_INCLUDES . 'metaboxes.php' );
 
 		// Integration functions
 		include( SC_INTEGRATIONS . 'edd-all-access.php' );
+		include( SC_INTEGRATIONS . 'easy-digital-downloads.php' );
 		include( SC_INTEGRATIONS . 'simple-notices-pro/simple-notices-pro.php' );
 		include( SC_INTEGRATIONS . 'simple-notices-pro/countdown/countdown.php' );
 	}
