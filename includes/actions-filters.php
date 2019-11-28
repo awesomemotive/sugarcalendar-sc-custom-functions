@@ -24,6 +24,10 @@ function sc_remove_slim_body_class( $classes = array() ) {
 		$classes[] = 'has-promotional-hero';
 	}
 
+	if ( true === sc_discount_promo_is_active() ) {
+		$classes[] = 'promo-is-active';
+	}
+
 	return $classes;
 }
 add_filter( 'body_class', 'sc_remove_slim_body_class', 11 );
