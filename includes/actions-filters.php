@@ -54,7 +54,16 @@ add_action( 'wp_enqueue_scripts', 'sc_styles' );
 
 
 /**
- * Add featured image to RSS feed
+ * Add the media namespace to the RSS feed header
+ */
+function sc_add_media_namespace() {
+	echo 'xmlns:media="http://search.yahoo.com/mrss/"';
+}
+add_action( 'rss2_ns', 'sc_add_media_namespace' );
+
+
+/**
+ * Add featured image data to the RSS feed
  */
 function sc_rss_featured_image() {
 	global $post;
