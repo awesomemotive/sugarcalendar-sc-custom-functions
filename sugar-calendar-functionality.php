@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name: Sugar Calendar - Site Functionality
+ * Plugin Name: Custom Functions
  * Plugin URI:  https://sugarcalendar.com
  * Description: Custom functionality for Sugar Calendar website.
  * Author:      Sandhills Development, LLC
  * Author URI:  https://sandhillsdev.com
- * Version:     1.0.1
+ * Version:     2.0.0
  *
  * Please think about where your functions belong and place them there.
  * Create new files and directories if necessary.
@@ -16,10 +16,7 @@
  * Definitions
  */
 define( 'SC_PLUGIN_DIR', dirname( __FILE__ ) );
-
-define( 'SC_INCLUDES', SC_PLUGIN_DIR . '/includes/' );
-define( 'SC_INTEGRATIONS', SC_INCLUDES . 'integrations/' );
-
+define( 'SC_PLUGIN_INCLUDES', SC_PLUGIN_DIR . '/includes/' );
 $sc_theme = wp_get_theme();
 define( 'SC_THEME_VERSION', $sc_theme->get( 'Version' ) );
 
@@ -43,15 +40,7 @@ class SC_Custom_Functions {
 	private function includes() {
 
 		// General functions
-		include( SC_INCLUDES . 'actions-filters.php' );
-		include( SC_INCLUDES . 'customizer.php' );
-		include( SC_INCLUDES . 'metaboxes.php' );
-
-		// Integration functions
-		include( SC_INTEGRATIONS . 'edd-all-access.php' );
-		include( SC_INTEGRATIONS . 'easy-digital-downloads.php' );
-		include( SC_INTEGRATIONS . 'simple-notices-pro/simple-notices-pro.php' );
-		include( SC_INTEGRATIONS . 'simple-notices-pro/countdown/countdown.php' );
+		include( SC_PLUGIN_INCLUDES . 'actions-filters.php' );
 	}
 }
 
