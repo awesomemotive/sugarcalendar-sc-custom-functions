@@ -42,6 +42,9 @@ class SC_Custom_Functions {
 		// General functions
 		include( SC_PLUGIN_INCLUDES . 'actions-filters.php' );
 		include( SC_PLUGIN_INCLUDES . '3rd-party-plugins.php' );
+
+		// Custom Post Type functions
+		include( SC_PLUGIN_INCLUDES . 'post-types/post-types.php' );
 	}
 }
 
