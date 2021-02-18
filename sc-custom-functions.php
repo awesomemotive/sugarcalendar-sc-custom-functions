@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Custom Functions
+ * Plugin Name: SC Custom Functions
  * Plugin URI:  https://sugarcalendar.com
  * Description: Custom functionality for Sugar Calendar website.
  * Author:      Sandhills Development, LLC
