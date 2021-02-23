@@ -54,7 +54,7 @@ add_filter( 'rss2_item', 'sc_rss_featured_image' );
 function sc_edd_sl_grandfather( $price, $download_id, $options ) {
 
 
-	if ( ! empty( $options['license_id'] ) ) {
+	if ( ! empty( $options['license_id'] ) && empty( $options['upgrade_id'] ) ) {
 
 		// Only existing license keys get grandfathered
 		$license = edd_software_licensing()->get_license( $options['license_id'] );
