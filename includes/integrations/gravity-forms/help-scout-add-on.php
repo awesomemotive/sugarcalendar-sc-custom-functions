@@ -1,10 +1,15 @@
-<?php
+<?php // Gravity Forms Help Scout Add-on functions
 
 /**
  * Send a pushover notification when the Gravity Forms Help Scout addon is not authenticated.
  *
+ * @param $feed
+ * @param $entry
+ * @param $form
+ * @param $addon
  */
 function sc_helpscout_authentication_notification( $feed, $entry, $form, $addon ) {
+
 	// Only run this code if there is a problem with Help Scout API authentication.
 	if ( ! $addon->is_authenticated() && function_exists( 'ckpn_send_notification' ) ) {
 
@@ -19,6 +24,7 @@ function sc_helpscout_authentication_notification( $feed, $entry, $form, $addon 
 
 		// Find the users who can view_shop_reports and have a user key.
 		foreach ( $users as $user_id => $user_key ) {
+
 			if ( ! user_can( $user_id, $alert_capability ) ) {
 				continue;
 			}
