@@ -17,6 +17,7 @@
  */
 define( 'SC_PLUGIN_DIR', dirname( __FILE__ ) );
 define( 'SC_PLUGIN_INCLUDES', SC_PLUGIN_DIR . '/includes/' );
+define( 'SC_PLUGIN_INTEGRATIONS', SC_PLUGIN_INCLUDES . 'integrations/' );
 $sc_theme = wp_get_theme();
 define( 'SC_THEME_VERSION', $sc_theme->get( 'Version' ) );
 
@@ -41,7 +42,10 @@ class SC_Custom_Functions {
 
 		// General functions
 		include( SC_PLUGIN_INCLUDES . 'actions-filters.php' );
-		include( SC_PLUGIN_INCLUDES . '3rd-party-plugins.php' );
+
+		// Integrations
+		include( SC_PLUGIN_INTEGRATIONS . 'easy-digital-downloads/software-licensing.php' );
+		include( SC_PLUGIN_INTEGRATIONS . 'gravity-forms/help-scout-add-on.php' );
 
 		// Custom Post Type functions
 		include( SC_PLUGIN_INCLUDES . 'post-types/post-types.php' );
