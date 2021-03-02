@@ -15,11 +15,11 @@
 /**
  * Definitions
  */
-define( 'SC_PLUGIN_DIR', dirname( __FILE__ ) );
-define( 'SC_PLUGIN_INCLUDES', SC_PLUGIN_DIR . '/includes/' );
-define( 'SC_PLUGIN_INTEGRATIONS', SC_PLUGIN_INCLUDES . 'integrations/' );
+define( 'SCCF_PLUGIN_DIR', dirname( __FILE__ ) );
+define( 'SCCF_INCLUDES', SCCF_PLUGIN_DIR . '/includes/' );
+define( 'SCCF_INTEGRATIONS', SCCF_INCLUDES . 'integrations/' );
 $sc_theme = wp_get_theme();
-define( 'SC_THEME_VERSION', $sc_theme->get( 'Version' ) );
+define( 'SCCF_THEME_VERSION', $sc_theme->get( 'Version' ) );
 
 /**
  * Class SC_Custom_Functions
@@ -41,14 +41,14 @@ class SC_Custom_Functions {
 	private function includes() {
 
 		// General functions
-		include( SC_PLUGIN_INCLUDES . 'actions-filters.php' );
+		include( SCCF_INCLUDES . 'actions-filters.php' );
 
 		// Integrations
-		include( SC_PLUGIN_INTEGRATIONS . 'easy-digital-downloads/software-licensing.php' );
-		include( SC_PLUGIN_INTEGRATIONS . 'gravity-forms/help-scout-add-on.php' );
+		include( SCCF_INTEGRATIONS . 'easy-digital-downloads/software-licensing.php' );
+		include( SCCF_INTEGRATIONS . 'gravity-forms/help-scout-add-on.php' );
 
 		// Custom Post Type functions
-		include( SC_PLUGIN_INCLUDES . 'post-types/post-types.php' );
+		include( SCCF_INCLUDES . 'post-types/post-types.php' );
 	}
 }
 
