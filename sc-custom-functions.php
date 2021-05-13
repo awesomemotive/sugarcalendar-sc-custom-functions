@@ -43,6 +43,9 @@ class SC_Custom_Functions {
 		// General functions
 		include( SCCF_INCLUDES . 'actions-filters.php' );
 
+		// Settings functions
+		include( SCCF_INCLUDES . 'settings/main.php' );
+
 		// Integrations
 		include( SCCF_INTEGRATIONS . 'easy-digital-downloads/software-licensing.php' );
 		include( SCCF_INTEGRATIONS . 'gravity-forms/help-scout-add-on.php' );
